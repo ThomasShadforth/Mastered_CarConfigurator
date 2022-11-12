@@ -23,6 +23,7 @@ public class CinemachineCamManager : MonoBehaviour
 
     public void SwitchState(int indexChange)
     {
+        //Change the current camera index based on the direction of the camera change
         _currentCamIndex += indexChange;
 
         //Set the index to the min or max based on if it goes above the max or below to starting index
@@ -35,6 +36,9 @@ public class CinemachineCamManager : MonoBehaviour
             _currentCamIndex = 0;
         }
 
+        //Play the animation state based on the name pulled using the camera index
         _animator.Play(_camNames[_currentCamIndex]);
+
+        //When playing the animation state in the animator, the cinemachine will blend to the camera assigned to that state (E.g. if the state played is "Main", the main camera will blend to the cinemachine camera called "Main" from the current camera. How it blends is based on the defined blend settings)
     }
 }
